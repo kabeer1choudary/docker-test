@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+    - docker
+
+before_install:
+    - docker build -t kabeerchoudary/node_nginx -f Dockerfile.dev .
+
+script:
+    - docker run kabeerchoudary/node_nginx npm run test -- --coverage
